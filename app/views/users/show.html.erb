@@ -23,7 +23,7 @@
 <p>
   <% @user.a_user_questions.each do |q| %>
     <%= q.q_user.name %>からもらった質問：
-      <% if q.original.present? %>
+      <% if q.original.ori_question.present? %>
         <%= q.original.ori_question %>
       <% else %>
         <%= q.q_number %>

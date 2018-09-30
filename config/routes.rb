@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users,only: [:index,:show,:edit,:update] do
+  resources :users,only: [:index,:show,:edit,:update,:destroy] do
     resources :questions,only: [:show,:new,:create,:destroy]
     resources :answers,only: [:create,:edit,:update,:destroy]
   end
