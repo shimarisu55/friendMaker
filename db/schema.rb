@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
     t.string "content", default: "", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
   create_table "originals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
     t.string "ori_question", default: "", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
     t.integer "user_id"
     t.integer "profile_q_number"
     t.string "profile_a"
-    t.boolean "delete_flag"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
     t.integer "q_number", default: 0, null: false
     t.integer "user_a_id"
     t.integer "user_q_id"
-    t.boolean "delete_flag"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
     t.integer "icon_animal", default: 0, null: false
     t.integer "icon_color", default: 0, null: false
     t.string "name"
+    t.datetime "deleted_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

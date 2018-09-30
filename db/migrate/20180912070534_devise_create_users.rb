@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :icon_animal, null: false, default: 0
       t.integer :icon_color, null: false, default: 0
       t.string :name
+      t.datetime :deleted_at
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

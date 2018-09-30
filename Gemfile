@@ -74,6 +74,7 @@ gem "font-awesome-rails"
 gem 'carrierwave', '~> 1.0'
 
 gem 'devise'
+gem 'paranoia'
 gem "kaminari"
 gem 'omniauth'
 gem 'omniauth-twitter'
