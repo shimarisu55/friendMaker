@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :q_user_questions, class_name: 'Question', :foreign_key => 'user_q_id', dependent: :destroy
+  has_many :q_user_questions, class_name: 'Question', :foreign_key => 'user_q_id'
   has_many :a_user_questions, class_name: 'Question', :foreign_key => 'user_a_id', dependent: :destroy
   has_many :profiles, dependent: :destroy
   accepts_nested_attributes_for :profiles
@@ -12,4 +12,6 @@ class User < ApplicationRecord
   MAX_PROFILES_LENGTH = 3
   validates :profiles, length: {maximum: MAX_PROFILES_LENGTH}
   validates_uniqueness_of :email, conditions: -> { with_deleted }
+
+
 end

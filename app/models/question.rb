@@ -20,5 +20,14 @@ class Question < ApplicationRecord
             尊敬している人は誰ですか？
             愛読書は何ですか？
         )
+        
+    def non_delete_user
+        q_user = User.with_deleted.find(user_q_id)
+        if q_user.deleted_at == nil
+            q_user.name
+        else
+            "退会ユーザー"
+        end
+    end
 
 end
