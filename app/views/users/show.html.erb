@@ -22,13 +22,15 @@
 
 <p>
   <% @user.a_user_questions.each do |q| %>
-    <%= q.q_user.name %>からもらった質問：
+    <%= q.non_delete_user %>からもらった質問：
       <% if q.original.ori_question.present? %>
         <%= q.original.ori_question %>
       <% else %>
         <%= q.q_number %>
       <% end %>
+
     </br>
+
       <% if q.answer.content == '' %>
         <% if q.answer.question.a_user == current_user %>
       　  <%= link_to '回答する', edit_user_answer_path(@user, q.answer) %>
