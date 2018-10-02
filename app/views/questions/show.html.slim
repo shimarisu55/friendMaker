@@ -1,0 +1,20 @@
+p#notice
+  = notice
+p
+  strong
+    | Question number:
+  = @question.question_number
+p
+  strong
+    | 回答してほしい人:
+  = @question.user_answer.name
+p
+  strong
+    | 質問した人:
+  = @question.user_question.name
+p
+  strong
+    | Delete flag:
+  = @question.delete_flag
+|  | 
+= link_to 'Back', user_questions_path

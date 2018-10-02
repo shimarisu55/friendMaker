@@ -1,0 +1,38 @@
+p
+  = image_tag "animalicon/icon#{@user.icon_animal}_#{@user.icon_color}.png", size: "200x200"
+p
+  strong
+    | 名前:
+  = @user.name
+p
+  strong
+    | プロフィール:
+  - @user.profiles.each do |profile|
+    |  質問： 
+    = profile.profile_q_number
+    |  質問の答え： 
+    = profile.profile_a
+p
+  - @user.a_user_questions.each do |q|
+    = q.non_delete_user
+    | からもらった質問： 
+    - if q.original.ori_question.present?
+      = q.original.ori_question
+    - else
+      = q.q_number
+    - if q.answer.content == ''
+      - if q.answer.question.a_user == current_user
+        |  　 
+        = link_to '回答する', edit_user_answer_path(@user, q.answer)
+    - else
+      |  　回答：　
+      = q.answer.content
+    | 　 
+p
+  |  　
+  - if @user != current_user
+    = link_to '質問を作る', new_user_question_path(@user)
+- if @user == current_user
+  = link_to 'Edit', edit_user_path(@user)
+  |  | 
+= link_to 'Back', users_path

@@ -1,0 +1,27 @@
+p#notice
+  = notice
+h1
+  | Originals
+table
+  thead
+    tr
+      th
+        | Question
+      th
+        | Question
+      th[colspan="3"]
+  tbody
+    - @originals.each do |original|
+      tr
+        td
+          = original.question_id
+        td
+          = original.question
+        td
+          = link_to 'Show', original
+        td
+          = link_to 'Edit', edit_original_path(original)
+        td
+          = link_to 'Destroy', original, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Original', new_original_path

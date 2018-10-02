@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | User:
+  = @profile.user_id
+p
+  strong
+    | Profile q number:
+  = @profile.profile_q_number
+p
+  strong
+    | Profile a:
+  = @profile.profile_a
+p
+  strong
+    | Delete flag:
+  = @profile.delete_flag
+= link_to 'Edit', edit_profile_path(@profile)
+|  | 
+= link_to 'Back', profiles_path
