@@ -43,7 +43,8 @@ class AnswersController < ApplicationController
     if @answer.question.a_user == current_user
       respond_to do |format|
         if @answer.update(answer_params)
-          format.html { redirect_to user_path(current_user), notice: 'Answer was successfully updated.' }
+          format.html { redirect_to user_path(current_user) }
+          flash[:success] = '回答が投稿されました！'
           format.json { render :show, status: :ok, location: @answer }
         else
           format.html { render :edit }

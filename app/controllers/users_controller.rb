@@ -45,7 +45,8 @@ class UsersController < ApplicationController
     if @user == current_user
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to @user, notice: '更新されました！' }
+          format.html { redirect_to @user }
+          flash[:success] = '更新されました'
           format.json { render json: { src: icon_image_source }, status: :ok }
         else
           format.html { render :edit }
@@ -61,7 +62,8 @@ class UsersController < ApplicationController
     if @user == current_user
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to users_url }
+        flash[:success] = '退会処理完了しました！'
         format.json { head :no_content }
       end
     end
