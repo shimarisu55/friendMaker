@@ -43,8 +43,9 @@
         = image_tag "animalicon/icon0_4.png", size: "50x50", alt: "Image 4"
       li.list_image
         = image_tag "animalicon/icon0_5.png", size: "50x50", alt: "Image 5"
-  #icon_animal
+  #icon
     |  アイコンイメージ：
+    br
     = render 'icon', user: user
   .field.form-group
     = form.fields_for :profiles, user.profiles do |t|
@@ -52,5 +53,30 @@
       = t.text_area :profile_a, class:"form-control"
   .action
     = form.submit '更新', class:"action btn btn-success"
-script[type="text/javascript"]
-  |  //クリックで動物を選べます。 $(document).on("click", ".animal_list .list_image", function() { var index = $(this).index() $.ajax({ url: './', type: 'PATCH', data: { user: { icon_animal: index } }, dataType: 'json', success: function(data){ $('#icon_animal > img').attr('src', data.src); } }) }); //クリックでカラーを選べます。 $(document).on("click", ".color_list .list_image", function() { var index = $(this).index() $.ajax({ url: './', type: 'PATCH', data: { user: { icon_color: index } }, dataType: 'json', success: function(data){ $('#icon_animal > img').attr('src', data.src); } }) }); 
+
+javascript:
+  $(".animal_list li").click(function() {
+    var index = $(this).index() 
+    $.ajax({ 
+      url: './',
+      type: 'PATCH',
+      data: { user: { icon_animal: index } },
+      dataType: 'json',
+      success: function(data){
+        $('#icon > img').attr('src', data.src);
+      }
+    }) 
+  });
+
+  $(".color_list li").click(function() {
+    var index = $(this).index()
+    $.ajax({ 
+      url: './', 
+      type: 'PATCH', 
+      data: { user: { icon_color: index } }, 
+      dataType: 'json', 
+      success: function(data){ 
+        $('#icon > img').attr('src', data.src); 
+      } 
+    }) 
+  }); 
