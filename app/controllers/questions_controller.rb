@@ -35,7 +35,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to user_path(@question.a_user), notice: 'Question was successfully created.' }
+        format.html { redirect_to user_path(@question.a_user) }
+        flash[:success] = '質問が投稿されました。回答を待ちましょう。'
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
