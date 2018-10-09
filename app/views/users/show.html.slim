@@ -28,7 +28,7 @@ div class="col-12 text-center" id="profile-back"
             = q.non_delete_user + "さんからの質問"
           div class="questioneer"
             div class="q-icon"
-              =image_tag "animalicon/icon#{q.q_user.icon_animal}_#{q.q_user.icon_color}.png", size: "80x80"
+              =image_tag "animalicon/icon#{q.q_user.icon_animal}_#{q.q_user.icon_color}.png", size: "80x80" if q.q_user.present?
             div class="q-chatting"
               div class="says"
                 p
