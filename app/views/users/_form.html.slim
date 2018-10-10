@@ -10,7 +10,7 @@
   .field.form-group
     = form.label :name
     = form.text_field :name, class: "form-control"
-  - if user.icon_animal == 0 || user.icon_color == 0
+  - if user.icon_animal == 0 && user.icon_color == 0
     .field
       = form.label :アイコンの動物を選びましょう　
     .animal_list
