@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Question:
+  = @answer.question_id
+p
+  strong
+    | Answer:
+  = @answer.answer
+p
+  strong
+    | Delete flag:
+  = @answer.delete_flag
+= link_to 'Edit', edit_user_answer_path(@answer)
+|  | 
+= link_to 'Back', user_answers_path

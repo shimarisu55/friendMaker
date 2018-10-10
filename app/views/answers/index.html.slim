@@ -1,0 +1,39 @@
+p#notice
+  = notice
+h1
+  | Answers
+table
+  thead
+    tr
+      th
+        | Question
+      th
+        | Answer
+      th
+        | 質問した人
+      th
+        | 回答する人
+      th
+        | Delete flag
+      th[colspan="3"]
+  tbody
+    - @answers.each do |answer|
+      tr
+        td
+          = answer.question_id
+        td
+          = answer.answer
+        td
+          = answer.question.user_question.name
+        td
+          = answer.question.user_answer.name
+        td
+          = answer.delete_flag
+        td
+          = link_to 'Show', user_answer_path(answer,answer)
+        td
+          = link_to 'Edit', edit_user_answer_path(answer,answer)
+        td
+          = link_to 'Destroy', user_answer_path(answer,answer), method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Answer', new_user_answer_path

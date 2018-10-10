@@ -1,0 +1,28 @@
+h2
+  | ログイン
+.desc-slide
+  ul.slides
+    li
+      = image_tag "animalicon/icon0_0.png", size: "400x400", alt: "Image 0"
+    li
+      = image_tag "animalicon/icon1_1.png", size: "400x400", alt: "Image 0"
+    li
+      = image_tag "animalicon/icon2_2.png", size: "400x400", alt: "Image 0"
+    li
+      = image_tag "animalicon/icon3_3.png", size: "400x400", alt: "Image 0"
+    li
+      = image_tag "animalicon/icon4_4.png", size: "400x400", alt: "Image 0"
+    li
+      = image_tag "animalicon/icon5_5.png", size: "400x400", alt: "Image 0"
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+  .field
+    = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label 'ログイン状態を保存'
+  .actions
+    = f.submit "ログイン"
+= render "users/shared/links"

@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Question:
+  = @original.question_id
+p
+  strong
+    | Question:
+  = @original.question
+= link_to 'Edit', edit_original_path(@original)
+|  | 
+= link_to 'Back', originals_path

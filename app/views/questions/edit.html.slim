@@ -1,0 +1,6 @@
+h1
+  | Editing Question
+= render 'form', question: @question
+= link_to 'Show', user_question_path(@question)
+|  | 
+= link_to 'Back', user_questions_path

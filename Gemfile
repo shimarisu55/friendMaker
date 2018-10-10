@@ -81,3 +81,5 @@ gem 'omniauth-twitter'
 gem 'social-share-button'
 
 gem 'mysql2'
+gem 'slim-rails'
+gem 'html2slim'
