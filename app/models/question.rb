@@ -30,4 +30,13 @@ class Question < ApplicationRecord
         end
     end
 
+    def non_delete_user_icon
+        q_user = User.with_deleted.find(user_q_id)
+        if q_user.deleted_at == nil
+            ActionController::Base.helpers.image_tag "animalicon/icon#{q_user.icon_animal}_#{q_user.icon_color}.png", size: "80x80"
+        else
+            ActionController::Base.helpers.image_tag "animalicon/icon10_10.png", size: "80x80"
+        end
+    end
+
 end
