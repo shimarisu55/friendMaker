@@ -10,42 +10,43 @@
   .field.form-group
     = form.label :name
     = form.text_field :name, class: "form-control"
-  .field
-    = form.label :アイコンの動物を選びましょう　
-  .animal_list
-    ul
-      li.list_image
-        = image_tag "animalsilhouette/animal0.png", size: "50x50", alt: "Image 0"
-      li.list_image
-        = image_tag "animalsilhouette/animal1.png", size: "50x50", alt: "Image 1"
-      li.list_image
-        = image_tag "animalsilhouette/animal2.png", size: "50x50", alt: "Image 2"
-      li.list_image
-        = image_tag "animalsilhouette/animal3.png", size: "50x50", alt: "Image 3"
-      li.list_image
-        = image_tag "animalsilhouette/animal4.png", size: "50x50", alt: "Image 4"
-      li.list_image
-        = image_tag "animalsilhouette/animal5.png", size: "50x50", alt: "Image 5"
-  .field
-    = form.label :アイコンの色を選びましょう
-  .color_list
-    ul
-      li.list_image
-        = image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0"
-      li.list_image
-        = image_tag "animalicon/icon0_1.png", size: "50x50", alt: "Image 1"
-      li.list_image
-        = image_tag "animalicon/icon0_2.png", size: "50x50", alt: "Image 2"
-      li.list_image
-        = image_tag "animalicon/icon0_3.png", size: "50x50", alt: "Image 3"
-      li.list_image
-        = image_tag "animalicon/icon0_4.png", size: "50x50", alt: "Image 4"
-      li.list_image
-        = image_tag "animalicon/icon0_5.png", size: "50x50", alt: "Image 5"
-  #icon
-    |  アイコンイメージ：
-    br
-    = render 'icon', user: user
+  - if user.icon_animal == 0 || user.icon_color == 0
+    .field
+      = form.label :アイコンの動物を選びましょう　
+    .animal_list
+      ul
+        li.list_image
+          = image_tag "animalsilhouette/animal0.png", size: "50x50", alt: "Image 0"
+        li.list_image
+          = image_tag "animalsilhouette/animal1.png", size: "50x50", alt: "Image 1"
+        li.list_image
+          = image_tag "animalsilhouette/animal2.png", size: "50x50", alt: "Image 2"
+        li.list_image
+          = image_tag "animalsilhouette/animal3.png", size: "50x50", alt: "Image 3"
+        li.list_image
+          = image_tag "animalsilhouette/animal4.png", size: "50x50", alt: "Image 4"
+        li.list_image
+          = image_tag "animalsilhouette/animal5.png", size: "50x50", alt: "Image 5"
+    .field
+      = form.label :アイコンの色を選びましょう
+    .color_list
+      ul
+        li.list_image
+          = image_tag "animalicon/icon0_0.png", size: "50x50", alt: "Image 0"
+        li.list_image
+          = image_tag "animalicon/icon0_1.png", size: "50x50", alt: "Image 1"
+        li.list_image
+          = image_tag "animalicon/icon0_2.png", size: "50x50", alt: "Image 2"
+        li.list_image
+          = image_tag "animalicon/icon0_3.png", size: "50x50", alt: "Image 3"
+        li.list_image
+          = image_tag "animalicon/icon0_4.png", size: "50x50", alt: "Image 4"
+        li.list_image
+          = image_tag "animalicon/icon0_5.png", size: "50x50", alt: "Image 5"
+    #icon
+      |  アイコンイメージ：
+      br
+      = render 'icon', user: user
   .field.form-group
     = form.fields_for :profiles, user.profiles do |t|
       = t.select :profile_q_number, Profile.profile_q_numbers.keys, prompt: '質問を選んでください', class:"form-control"
