@@ -83,3 +83,6 @@ gem 'social-share-button'
 gem 'mysql2'
 gem 'slim-rails'
 gem 'html2slim'
+
+# 翻訳用のgem
+gem 'rails-i18n'
