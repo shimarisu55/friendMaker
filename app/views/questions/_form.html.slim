@@ -8,15 +8,25 @@
         - question.errors.full_messages.each do |message|
           li
             = message
-  .field
-    = form.label :質問を選んでください
-    = form.select :q_number, Question.q_numbers.keys
-  .field
-    = form.label :オリジナル質問を作ってください
+  .field.form-group
+    = form.label :質問を選んでください, class:"form-control"
+    = form.select :q_number, Question.q_numbers.keys, { prompt: "質問を選んでください" }, { class:"form-control change_question" }
+  .field.form-group id="ori_question"
+    = form.label :オリジナル質問を作ってください, class:"form-control"
     = form.fields_for :original, @question.original do |t|
-      = t.text_area :ori_question
+      = t.text_area :ori_question, class:"form-control"
   .field
     = form.fields_for :answer, @question.answer do |t|
       = t.hidden_field :question_id, value: @question
   .actions
     = form.submit
+
+javascript:
+  $(".change_question").change(function() {
+    var val = $(this).val();
+    if(val == "オリジナル質問"){
+      $('#ori_question').toggle(true);
+    }else{
+      $('#ori_question').hide();
+    }
+  });
