@@ -18,4 +18,42 @@ body {
     a:hover {
         background: transparent;
     }
+
+    .form-control {
+        border-radius: 10px;
+        border: solid 2px #6ad1c8;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #6ad1c8;
+        border: dashed 2px #fff;
+        box-shadow: 0 0 0 5px #6ad1c8;
+        margin-top: 1rem;
+
+        &:focus {
+            background: #6ad1c8;
+            border: dashed 2px #fff;
+            box-shadow: 0 0 0 5px #6ad1c8;
+        }
+
+        &:after {
+            margin-right: -10px;
+            background: #81e4dc;
+            width: 30px;
+        }
+    }
+
+    
+    select::-ms-expand {
+        display: none;
+    }
+
+    .space {
+        margin: 5px;
+        height: 98%;
+    }
 }

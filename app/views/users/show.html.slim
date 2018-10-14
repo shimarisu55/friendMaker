@@ -1,51 +1,52 @@
-div class="col-12 text-center" id="profile-back"
-  p id="profile-name"
-    = @user.name
-  p
-    = image_tag "animalicon/icon#{@user.icon_animal}_#{@user.icon_color}.png", size: "200x200"
-  p
-  |
-  - if @user != current_user
-    = link_to @user.name + 'さんに質問する', new_user_question_path(@user), class: 'btn btn-primary'
-  - if @user == current_user
-    = link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-primary'
-  div class="profile-title"
-    h4 Profile
-  div class="col-12"
-    div class="profile row"
-      - @user.profiles.each do |profile|
-        div class="profile-col col-12 col-md-4"
-          div class="space"
-            div class="profile-table"
-              p class="profile-q" = profile.profile_q_number
-              p class="profile-a" = profile.profile_a
-  h4 Questions
-  div class="col-12"
-    div class="questions row"
-      - @user.a_user_questions.each do |q|
-        div class="question-table col-12"
-          h5
-            = q.non_delete_user + "さんからの質問"
-          div class="questioneer"
-            div class="q-icon"
-              = q.non_delete_user_icon
-            div class="q-chatting"
-              div class="says"
+.col-12.text-center
+  .profile-back
+    p id="profile-name"
+      = @user.name
+    p
+      = image_tag "animalicon/icon#{@user.icon_animal}_#{@user.icon_color}.png", size: "200x200"
+    p
+    |
+    - if @user != current_user
+      = link_to @user.name + 'さんに質問する', new_user_question_path(@user), class: 'btn btn-primary'
+    - if @user == current_user
+      = link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-primary'
+    div class="profile-title"
+      h4 Profile
+    div class="col-12"
+      div class="profile row"
+        - @user.profiles.each do |profile|
+          div class="profile-col col-12 col-md-4"
+            div class="space"
+              div class="profile-table"
+                p class="profile-q" = profile.profile_q_number
+                p class="profile-a" = profile.profile_a
+    h4 Questions
+    div class="col-12"
+      div class="questions row"
+        - @user.a_user_questions.each do |q|
+          div class="question-table col-12"
+            h5
+              = q.non_delete_user + "さんからの質問"
+            div class="questioneer"
+              div class="q-icon"
+                = q.non_delete_user_icon
+              div class="q-chatting"
+                div class="says"
+                  p
+                  |
+                  - if q.original.ori_question.present?
+                    = q.original.ori_question
+                  - else
+                    = q.q_number
+
+            - if q.answer.content == ''
+              - if q.answer.question.a_user == current_user
+                = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+            - else
+              |  　
+              div class="a-chatting text-right"
                 p
-                |
-                - if q.original.ori_question.present?
-                  = q.original.ori_question
-                - else
-                  = q.q_number
+                  = q.answer.content
 
-          - if q.answer.content == ''
-            - if q.answer.question.a_user == current_user
-              = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
-          - else
-            |  　
-            div class="a-chatting text-right"
-              p
-                = q.answer.content
-
-  div class="text-left back-link"
-    = link_to '←Back', users_path
+    div class="text-left back-link"
+      = link_to '←Back', users_path

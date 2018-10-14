@@ -6,6 +6,7 @@ var $animalValue = $("input[name='user[icon_animal]'")
 var $colorValue = $("input[name='user[icon_color]'")
 
 $(function(){
+    // ページ更新時アイコンの値を初期化（アイコンの再設定を許可しない為）
     $animalValue.val(undefined);
     $colorValue.val(undefined);
 
@@ -20,16 +21,6 @@ $(function(){
         } else {
             $preview.attr('src',`/assets/animalsilhouette/animal${aIndex}.png`);
         }
-        
-        // $.ajax({ 
-        //     url: './',
-        //     type: 'PATCH',
-        //     data: { user: { icon_animal: index } },
-        //     dataType: 'json',
-        //     success: function(data){
-        //     $('#icon > img').attr('src', data.src);
-        //     } 
-        // })
     });
         
     $(".color_list li").click(function() {
@@ -43,15 +34,6 @@ $(function(){
         } else {
             $preview.attr('src',`/assets/coloricon/color${cIndex}`);
         }
-        // $.ajax({ 
-        //     url: './', 
-        //     type: 'PATCH', 
-        //     data: { user: { icon_color: index } }, 
-        //     dataType: 'json', 
-        //     success: function(data){ 
-        //     $('#icon > img').attr('src', data.src); 
-        //     } 
-        // }) 
     }); 
 });
 
