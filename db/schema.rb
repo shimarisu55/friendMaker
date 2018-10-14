@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "icon_animal", default: 0, null: false
-    t.integer "icon_color", default: 0, null: false
+    t.integer "icon_animal", default: 10, null: false
+    t.integer "icon_color", default: 10, null: false
     t.string "name"
     t.datetime "deleted_at"
     t.string "email", default: "", null: false
