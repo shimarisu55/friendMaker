@@ -8,7 +8,8 @@ class Question < ApplicationRecord
 
 
     enum q_number:
-        %i(好きな食べ物なんですか
+        %i(オリジナル質問
+            好きな食べ物なんですか
             好きな色はなんですか？
             海派？それとも山派？
             猫が好きですよね？
@@ -18,7 +19,6 @@ class Question < ApplicationRecord
             小学校の思い出を教えてください。
             尊敬している人は誰ですか？
             愛読書は何ですか？
-            オリジナル質問
         )
         
     def non_delete_user

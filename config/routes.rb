@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  match "*path" => "application#handle_500", via: :all
-
+  
   resources :profiles do
     resources :originals
   end
