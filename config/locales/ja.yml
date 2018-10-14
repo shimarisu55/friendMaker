@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        icon_animal: アイコンの動物
+        icon_color: アイコンの色
+      

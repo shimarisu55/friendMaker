@@ -10,7 +10,7 @@
   .field.form-group
     = form.label :name
     = form.text_field :name, class: "form-control"
-  - if (user.icon_animal == 10) || (user.icon_color == 10)
+  - if (user.icon_animal == 10) || (user.icon_color == 10) || (user.icon_animal == nil) || (user.icon_color == nil)
     .field
       = form.label :アイコンの動物を選びましょう
       = form.hidden_field :icon_animal
