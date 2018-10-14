@@ -12,6 +12,7 @@ class User < ApplicationRecord
   MAX_PROFILES_LENGTH = 3
   validates :profiles, length: {maximum: MAX_PROFILES_LENGTH}
   validates_uniqueness_of :email, conditions: -> { with_deleted }
-
+  validates :icon_animal, presence: true
+  validates :icon_color, presence: true
 
 end

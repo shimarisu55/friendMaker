@@ -10,48 +10,48 @@
   .field.form-group
     = form.label :name
     = form.text_field :name, class: "form-control"
-  - if (user.icon_animal == 0) || (user.icon_color == 0)
-    #icon-setting.icon-row.row
-      .icon-lists.col-12.col-md-8.col-lg-6
-        .field
-          = form.label :アイコンの動物を選びましょう
-          = form.hidden_field :icon_animal
-        .animal_list
-          ul
-            li.list_image
-              = image_tag "animalsilhouette/animal0.png", size: "50x50", alt: "Image 0"
-            li.list_image
-              = image_tag "animalsilhouette/animal1.png", size: "50x50", alt: "Image 1"
-            li.list_image
-              = image_tag "animalsilhouette/animal2.png", size: "50x50", alt: "Image 2"
-            li.list_image
-              = image_tag "animalsilhouette/animal3.png", size: "50x50", alt: "Image 3"
-            li.list_image
-              = image_tag "animalsilhouette/animal4.png", size: "50x50", alt: "Image 4"
-            li.list_image
-              = image_tag "animalsilhouette/animal5.png", size: "50x50", alt: "Image 5"
-        .field
-          = form.label :アイコンの色を選びましょう
-          = form.hidden_field :icon_color
-        .color_list
-          ul
-            li.list_image
-              = image_tag "coloricon/color0.png", size: "50x50", alt: "Image 0"
-            li.list_image
-              = image_tag "coloricon/color1.png", size: "50x50", alt: "Image 1"
-            li.list_image
-              = image_tag "coloricon/color2.png", size: "50x50", alt: "Image 2"
-            li.list_image
-              = image_tag "coloricon/color3.png", size: "50x50", alt: "Image 3"
-            li.list_image
-              = image_tag "coloricon/color4.png", size: "50x50", alt: "Image 4"
-            li.list_image
-              = image_tag "coloricon/color5.png", size: "50x50", alt: "Image 5"
-      .icon-show.col-12.col-md-4.col-lg-6
-          #icon
-          |  アイコンプレビュー
-          div
-            = image_tag "animalicon/icon10_10.png", id: "preview", alt: "Image preview"
+    - if (user.icon_animal == 10) || (user.icon_color == 10) || (user.icon_animal == nil) || (user.icon_color == nil)
+      #icon-setting.icon-row.row
+        .icon-lists.col-12.col-md-8.col-lg-6
+          .field
+            = form.label :アイコンの動物を選びましょう
+            = form.hidden_field :icon_animal
+          .animal_list
+            ul
+              li.list_image
+                = image_tag "animalsilhouette/animal0.png", size: "50x50", alt: "Image 0"
+              li.list_image
+                = image_tag "animalsilhouette/animal1.png", size: "50x50", alt: "Image 1"
+              li.list_image
+                = image_tag "animalsilhouette/animal2.png", size: "50x50", alt: "Image 2"
+              li.list_image
+                = image_tag "animalsilhouette/animal3.png", size: "50x50", alt: "Image 3"
+              li.list_image
+                = image_tag "animalsilhouette/animal4.png", size: "50x50", alt: "Image 4"
+              li.list_image
+                = image_tag "animalsilhouette/animal5.png", size: "50x50", alt: "Image 5"
+          .field
+            = form.label :アイコンの色を選びましょう
+            = form.hidden_field :icon_color
+          .color_list
+            ul
+              li.list_image
+                = image_tag "coloricon/color0.png", size: "50x50", alt: "Image 0"
+              li.list_image
+                = image_tag "coloricon/color1.png", size: "50x50", alt: "Image 1"
+              li.list_image
+                = image_tag "coloricon/color2.png", size: "50x50", alt: "Image 2"
+              li.list_image
+                = image_tag "coloricon/color3.png", size: "50x50", alt: "Image 3"
+              li.list_image
+                = image_tag "coloricon/color4.png", size: "50x50", alt: "Image 4"
+              li.list_image
+                = image_tag "coloricon/color5.png", size: "50x50", alt: "Image 5"
+        .icon-show.col-12.col-md-4.col-lg-6
+            #icon
+            |  アイコンプレビュー
+            div
+              = image_tag "animalicon/icon10_10.png", id: "preview", alt: "Image preview"
   .field.form-group
     = form.fields_for :profiles, user.profiles do |t|
       div.space
