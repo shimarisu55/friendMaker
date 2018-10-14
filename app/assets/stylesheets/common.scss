@@ -33,17 +33,29 @@ body {
         border: dashed 2px #fff;
         box-shadow: 0 0 0 5px #6ad1c8;
         margin-top: 1rem;
+        cursor: pointer;
 
         &:focus {
             background: #6ad1c8;
             border: dashed 2px #fff;
             box-shadow: 0 0 0 5px #6ad1c8;
         }
+    }
 
-        &:after {
-            margin-right: -10px;
-            background: #81e4dc;
-            width: 30px;
+    .selected-question {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #fff;
+        border: dashed 2px #6ad1c8;
+        box-shadow: 0 0 0 5px #fff;
+        margin-top: 1rem;
+        cursor: pointer;
+
+        &:focus {
+            background: #fff;
+            border: dashed 2px #6ad1c8;
+            box-shadow: 0 0 0 5px #fff;
         }
     }
 
@@ -56,4 +68,6 @@ body {
         margin: 5px;
         height: 98%;
     }
+
+
 }

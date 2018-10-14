@@ -9,24 +9,31 @@
           li
             = message
   .field.form-group
-    = form.label :質問を選んでください, class:"form-control"
-    = form.select :q_number, Question.q_numbers.keys, { prompt: "質問を選んでください" }, { class:"form-control change_question" }
+    = form.label :質問を選択してください
+    div.space
+      = form.select :q_number, Question.q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
   .field.form-group id="ori_question"
-    = form.label :オリジナル質問を作ってください, class:"form-control"
     = form.fields_for :original, @question.original do |t|
-      = t.text_area :ori_question, class:"form-control"
+      = t.text_area :ori_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
   .field
     = form.fields_for :answer, @question.answer do |t|
       = t.hidden_field :question_id, value: @question
   .actions
-    = form.submit
+    = form.submit '送信する', class: 'btn btn-primary'
 
 javascript:
   $(".change_question").change(function() {
     var val = $(this).val();
-    if(val == "オリジナル質問"){
-      $('#ori_question').show();
-    }else{
-      $('#ori_question').hide();
+
+    switch (val) {
+      case "オリジナル質問":
+        $('#ori_question').slideDown();
+        $(this).addClass("selected-question");
+        $(this).removeClass("form-select");
+        break;
+      default:
+        $('#ori_question').slideUp();
+        $(this).addClass("selected-question");
+        $(this).removeClass("form-select");
     }
   });
