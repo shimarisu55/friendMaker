@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
     belongs_to :user
 
+    validates :profile_a, length: { maximum: 140 }
+
     enum profile_q_number:
     %i(好きな食べ物なんですか
         好きな色はなんですか？

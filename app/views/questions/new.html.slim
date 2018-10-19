@@ -1,4 +1,5 @@
-h1
-  | New Question
-= render 'form', question: @question
-= link_to 'Back', user_path(@user)
+div.profile-back
+  h1
+    | New Question
+  = render 'form', question: @question
+  = link_to '←Back', user_path(@user), class: 'back-link'

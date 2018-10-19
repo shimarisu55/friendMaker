@@ -1,0 +1,73 @@
+body {
+    color: #666 !important;
+    // background: linear-gradient(top, rgba(254, 252, 234, 0.6) 0%, rgba(241, 218, 54, 0.6) 80%) no-repeat fixed,
+    //             image-url("bgimage/bgforest.jpg") no-repeat fixed !important;
+    background: #b6d8b6 image-url("bgimage/forest.gif") repeat-x bottom left fixed !important;
+
+    .btn-primary {
+        color: #fff !important;
+        border-radius: 20px;
+        border: transparent;
+        background: #6ad1c8;
+
+        &:hover {
+            background: #81e4dc;
+        }
+    }
+
+    a:hover {
+        background: transparent;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        border: solid 2px #6ad1c8;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #6ad1c8;
+        border: dashed 2px #fff;
+        box-shadow: 0 0 0 5px #6ad1c8;
+        margin-top: 1rem;
+        cursor: pointer;
+
+        &:focus {
+            background: #6ad1c8;
+            border: dashed 2px #fff;
+            box-shadow: 0 0 0 5px #6ad1c8;
+        }
+    }
+
+    .selected-question {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #fff;
+        border: dashed 2px #6ad1c8;
+        box-shadow: 0 0 0 5px #fff;
+        margin-top: 1rem;
+        cursor: pointer;
+
+        &:focus {
+            background: #fff;
+            border: dashed 2px #6ad1c8;
+            box-shadow: 0 0 0 5px #fff;
+        }
+    }
+
+    
+    select::-ms-expand {
+        display: none;
+    }
+
+    .space {
+        margin: 5px;
+        height: 98%;
+    }
+
+
+}
