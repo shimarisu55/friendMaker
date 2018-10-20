@@ -50,3 +50,6 @@
 
     div class="text-left back-link"
       = link_to '←Back', users_path
+    - if @user == current_user
+      div.text-right
+        = link_to '退会する', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
