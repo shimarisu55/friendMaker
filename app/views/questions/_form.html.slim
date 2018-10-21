@@ -11,10 +11,10 @@
   .field.form-group
     = form.label :質問を選択してください
     div.space
-      = form.select :q_number, Question.q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
+      = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
   .field.form-group id="ori_question"
     = form.fields_for :original, @question.original do |t|
-      = t.text_area :ori_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+      = t.text_area :first_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
   .field
     = form.fields_for :answer, @question.answer do |t|
       = t.hidden_field :question_id, value: @question

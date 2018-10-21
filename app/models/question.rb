@@ -7,7 +7,7 @@ class Question < ApplicationRecord
     accepts_nested_attributes_for :original
 
 
-    enum q_number:
+    enum first_q_number:
         %i(好きな食べ物なんですか
             好きな色はなんですか？
             海派？それとも山派？

@@ -81,16 +81,16 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:q_number, :user_a_id, :user_q_id, :delete_flag,
+      params.require(:question).permit(:first_q_number, :second_q_number, :third_q_number, :user_a_id, :user_q_id, :delete_flag,
          original_attributes: [
            :id,
            :question_id,
-           :ori_question
+           :first_question
          ],
          answer_attributes: [
           :id,
           :question_id,
-          :content
+          :first_content
         ])
     end
 end

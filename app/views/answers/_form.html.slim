@@ -11,12 +11,12 @@
   .field
     = form.label :届いた質問
     | ： 
-    - if answer.question.q_number == '質問を選びましょう'
-      = answer.question.original.ori_question
+    - if answer.question.first_q_number == '質問を選びましょう'
+      = answer.question.original.first_question
     - else
-      = answer.question.q_number
+      = answer.question.first_q_number
   .field
     = form.label :あなたの回答
-    = form.text_field :content
+    = form.text_field :first_content
   .actions
     = form.submit

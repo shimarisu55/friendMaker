@@ -10,22 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_014732) do
+ActiveRecord::Schema.define(version: 2018_10_21_055120) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
-    t.string "content", default: "", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_content", default: "", null: false
+    t.string "second_content", default: "", null: false
+    t.string "third_content", default: "", null: false
   end
 
   create_table "originals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "question_id"
-    t.string "ori_question", default: "", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_question", default: "", null: false
+    t.string "second_question", default: "", null: false
+    t.string "third_question", default: "", null: false
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -38,12 +42,14 @@ ActiveRecord::Schema.define(version: 2018_09_25_014732) do
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "q_number", default: 0, null: false
     t.integer "user_a_id"
     t.integer "user_q_id"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "first_q_number", default: 0, null: false
+    t.integer "second_q_number", default: 0, null: false
+    t.integer "third_q_number", default: 0, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

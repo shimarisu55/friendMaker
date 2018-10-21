@@ -34,19 +34,19 @@
                 div class="says"
                   p
                   |
-                  - if q.original.ori_question.present?
-                    = q.original.ori_question
+                  - if q.original.first_question.present?
+                    = q.original.first_question
                   - else
-                    = q.q_number
+                    = q.first_q_number
 
-            - if q.answer.content == ''
+            - if q.answer.first_content == ''
               - if q.answer.question.a_user == current_user
                 = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
             - else
               |  　
               div class="a-chatting text-right"
                 p
-                  = q.answer.content
+                  = q.answer.first_content
 
     div class="text-left back-link"
       = link_to '←Back', users_path
