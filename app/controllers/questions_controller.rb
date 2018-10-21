@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_question, only: [:show, :destroy]
-  before_action :set_user, only: [:show, :new, :destroy]
+  before_action :set_question, only: [:show, :destroy, :update,:edit]
+  before_action :set_user, only: [:show, :new, :destroy, :edit, :update]
 
   # GET /questions
   # GET /questions.json
@@ -47,17 +47,20 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @question.update(question_params)
-  #       format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @question }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @question.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    if @question.q_user == current_user
+      respond_to do |format|
+        if @question.update(question_params)
+          format.html { redirect_to user_path(@question.a_user) }
+          flash[:success] = '質問が投稿されました。回答を待ちましょう。'
+          format.json { render :show, status: :ok, location: @question }
+        else
+          format.html { render :edit }
+          format.json { render json: @question.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
 
   # DELETE /questions/1
   # DELETE /questions/1.json
@@ -81,16 +84,20 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:first_q_number, :second_q_number, :third_q_number, :user_a_id, :user_q_id, :delete_flag,
+      params.require(:question).permit(:first_q_number, :second_q_number, :third_q_number, :user_a_id, :user_q_id,
          original_attributes: [
            :id,
            :question_id,
-           :first_question
+           :first_question,
+           :second_question,
+           :third_question
          ],
          answer_attributes: [
           :id,
           :question_id,
-          :first_content
+          :first_content,
+          :second_content,
+          :third_content
         ])
     end
 end

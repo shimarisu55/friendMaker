@@ -1,25 +1,57 @@
-= form_with(model: question, url:user_questions_path, local: true) do |form|
-  - if question.errors.any?
-    #error_explanation
-      h2
-        = pluralize(question.errors.count, "error")
-        |  prohibited this question from being saved:
-      ul
-        - question.errors.full_messages.each do |message|
-          li
-            = message
-  .field.form-group
-    = form.label :質問を選択してください
-    div.space
-      = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
-  .field.form-group id="ori_question"
-    = form.fields_for :original, @question.original do |t|
-      = t.text_area :first_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
-  .field
-    = form.fields_for :answer, @question.answer do |t|
-      = t.hidden_field :question_id, value: @question
-  .actions
-    = form.submit '送信する', class: 'btn btn-primary'
+- if action_name == "new"
+
+  = form_with(model: question,url:{action: "create"}, local: true) do |form|
+    - if question.errors.any?
+      #error_explanation
+        h2
+          = pluralize(question.errors.count, "error")
+          |  prohibited this question from being saved:
+        ul
+          - question.errors.full_messages.each do |message|
+            li
+              = message
+    .field.form-group
+      = form.label :質問を選択してください
+      div.space
+        = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
+    .field.form-group id="ori_question"
+      = form.fields_for :original, @question.original do |t|
+        = t.text_area :first_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+    .field
+      = form.fields_for :answer, @question.answer do |t|
+        = t.hidden_field :question_id, value: @question
+    .actions
+      = form.submit '送信する', class: 'btn btn-primary'
+
+- if action_name == "edit"
+
+  = form_with(model: question, url:{action: "update"},local: true) do |form|
+    - if question.errors.any?
+      #error_explanation
+        h2
+          = pluralize(question.errors.count, "error")
+          |  prohibited this question from being saved:
+        ul
+          - question.errors.full_messages.each do |message|
+            li
+              = message
+    .field.form-group
+      = form.label :質問を選択してください
+      div.space
+      - if question.second_q_number.nil?
+        = form.select :second_q_number, Question.second_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" } 
+        .field.form-group class="first_question"
+        = form.fields_for :original, question.original do |t|
+          = t.text_area :second_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+      - elsif question.third_q_number.nil?
+        = form.select :third_q_number, Question.third_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
+        .field.form-group class="first_question"
+        = form.fields_for :original, question.original do |t|
+          = t.text_area :third_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+      - else
+        = "もう三回質問し終わりました。"
+    .actions
+      = form.submit '送信する', class: 'btn btn-primary'
 
 javascript:
   $(".change_question").change(function() {

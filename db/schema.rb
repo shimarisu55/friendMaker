@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2018_10_21_055120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "first_q_number", default: 0, null: false
-    t.integer "second_q_number", default: 0, null: false
-    t.integer "third_q_number", default: 0, null: false
+    t.integer "second_q_number"
+    t.integer "third_q_number"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
