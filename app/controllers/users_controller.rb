@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User
+            .includes(:a_user_questions) 
+            .order("questions.updated_at desc")
   end
 
   # GET /users/1
