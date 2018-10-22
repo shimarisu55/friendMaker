@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :users,only: [:index,:show,:edit,:update,:destroy] do
     resources :questions,only: [:show,:new,:create, :update,:edit]
     resources :answers,only: [:create,:edit,:update]
+    get 'goal'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
