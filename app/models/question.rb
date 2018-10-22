@@ -5,10 +5,11 @@ class Question < ApplicationRecord
     accepts_nested_attributes_for :answer
     has_one :original, dependent: :destroy
     accepts_nested_attributes_for :original
+    validates_uniqueness_of :user_q_id, :scope => :user_a_id
 
 
     enum first_q_number:
-    %i(好きな食べ物なんですか
+    %i(どんぐり一緒にどうですか？
         好きな色はなんですか？
         海派？それとも山派？
         猫が好きですよね？
@@ -26,12 +27,14 @@ class Question < ApplicationRecord
         小学校の思い出を教えてください。
         尊敬している人は誰ですか？
         愛読書は何ですか？
+        オリジナル
     )
     enum third_q_number:
     %i(質問
         ２つ目の質問です
         ３つ目の質問です
         ４つ目の質問です
+        オリジナルの質問です
     )
     
     def non_delete_user

@@ -14,7 +14,7 @@
       = form.label :質問を選択してください
       div.space
         = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
-    .field.form-group id="ori_question"
+    .field.form-group.ori_question
       = form.fields_for :original, @question.original do |t|
         = t.text_area :first_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
     .field
@@ -40,14 +40,14 @@
       div.space
       - if question.second_q_number.nil?
         = form.select :second_q_number, Question.second_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" } 
-        .field.form-group class="first_question"
-        = form.fields_for :original, question.original do |t|
-          = t.text_area :second_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+        .field.form-group.ori_question
+          = form.fields_for :original, question.original do |t|
+            = t.text_area :second_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
       - elsif question.third_q_number.nil?
         = form.select :third_q_number, Question.third_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
-        .field.form-group class="first_question"
-        = form.fields_for :original, question.original do |t|
-          = t.text_area :third_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+        .field.form-group.ori_question
+          = form.fields_for :original, question.original do |t|
+            = t.text_area :third_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
       - else
         = "もう三回質問し終わりました。"
     .actions
@@ -59,12 +59,12 @@ javascript:
 
     switch (val) {
       case "オリジナル質問":
-        $('#ori_question').slideDown();
+        $('.ori_question').slideDown();
         $(this).addClass("selected-question");
         $(this).removeClass("form-select");
         break;
       default:
-        $('#ori_question').slideUp();
+        $('.ori_question').slideUp();
         $(this).addClass("selected-question");
         $(this).removeClass("form-select");
     }

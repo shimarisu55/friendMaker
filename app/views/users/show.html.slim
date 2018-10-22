@@ -41,6 +41,15 @@
                     = q.original.first_question
                   - else
                     = q.first_q_number
+            - if q.answer.first_content == ''
+              - if q.answer.question.a_user == current_user
+                = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+            - else
+              |  　
+              div class="a-chatting text-right"
+                p
+                  = q.answer.first_content
+
           - if q.second_q_number.present?
             div class="question-table col-12"
               h5
@@ -56,6 +65,15 @@
                       = q.original.second_question
                     - else
                       = q.second_q_number
+              - if q.answer.second_content == ''
+                - if q.answer.question.a_user == current_user
+                  = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+              - else
+                |  　
+                div class="a-chatting text-right"
+                  p
+                    = q.answer.second_content
+
           - if q.third_q_number.present?
             div class="question-table col-12"
               h5
@@ -71,15 +89,16 @@
                       = q.original.third_question
                     - else
                       = q.third_q_number
+              - if q.answer.third_content == ''
+                - if q.answer.question.a_user == current_user
+                  = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+              - else
+                |  　
+                div class="a-chatting text-right"
+                  p
+                    = q.answer.third_content
 
-            - if q.answer.first_content == ''
-              - if q.answer.question.a_user == current_user
-                = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
-            - else
-              |  　
-              div class="a-chatting text-right"
-                p
-                  = q.answer.first_content
+
 
     div class="text-left back-link"
       = link_to '←Back', users_path
