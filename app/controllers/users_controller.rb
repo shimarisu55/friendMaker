@@ -70,6 +70,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def goal
+    @twitter_user = User.find(params[:user_id])
+  end
+
   private
 
     def icon_image_source

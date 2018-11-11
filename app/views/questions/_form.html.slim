@@ -11,9 +11,9 @@
             li
               = message
     .field.form-group
-      = form.label :質問を選択してください
+      = form.label :１回目のの質問です。
       div.space
-        = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
+        = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '１回目の質問です'}, { class: "form-control change_question form-select" }
     .field.form-group.ori_question
       = form.fields_for :original, @question.original do |t|
         = t.text_area :first_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
@@ -36,18 +36,20 @@
             li
               = message
     .field.form-group
-      = form.label :質問を選択してください
-      div.space
       - if question.second_q_number.nil?
-        = form.select :second_q_number, Question.second_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" } 
-        .field.form-group.ori_question
-          = form.fields_for :original, question.original do |t|
-            = t.text_area :second_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+        = form.label :２回目の質問です
+        div.space
+          = form.select :second_q_number, Question.second_q_numbers.keys, { prompt: '２回目の質問です'}, { class: "form-control change_question form-select" } 
+          .field.form-group.ori_question
+            = form.fields_for :original, question.original do |t|
+              = t.text_area :second_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
       - elsif question.third_q_number.nil?
-        = form.select :third_q_number, Question.third_q_numbers.keys, { prompt: '質問を選択してください'}, { class: "form-control change_question form-select" }
-        .field.form-group.ori_question
-          = form.fields_for :original, question.original do |t|
-            = t.text_area :third_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
+        = form.label :最後の質問です
+        div.space
+          = form.select :third_q_number, Question.third_q_numbers.keys, { prompt: '３回目の質問です'}, { class: "form-control change_question form-select" }
+          .field.form-group.ori_question
+            = form.fields_for :original, question.original do |t|
+              = t.text_area :third_question, class:"form-control", placeholder: 'オリジナル質問を作ってください'
       - else
         = "もう三回質問し終わりました。"
     .actions
