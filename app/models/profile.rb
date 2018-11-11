@@ -4,7 +4,7 @@ class Profile < ApplicationRecord
     validates :profile_a, length: { maximum: 140 }
 
     enum profile_q_number:
-    %i(んぐり一緒にどうですか？
+    %i(どんぐり一緒にどうですか？
         好きな色はなんですか？
         Twitterのフォロワー数は何桁？
         文系？理系？体育会系？
