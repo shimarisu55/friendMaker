@@ -11,7 +11,7 @@
             li
               = message
     .field.form-group
-      = form.label :１回目のの質問です。
+      = form.label :１回目の質問です。
       div.space
         = form.select :first_q_number, Question.first_q_numbers.keys, { prompt: '１回目の質問です'}, { class: "form-control change_question form-select" }
     .field.form-group.ori_question

@@ -10,7 +10,7 @@
       - if @question.present?
         - if @question.first_q_number != 0 && @question.answer.first_content == '' or  @question.second_q_number.presence && @question.answer.second_content == '' or  @question.third_q_number.presence && @question.answer.third_content == ''
           = '回答を待とう'
-        - elsif @question.third_q_number != 0
+        - elsif @question.third_q_number.present?
           = 'もう質問し終わりました'
         - else
           = link_to @user.name + 'さんに質問する', edit_user_question_path(@user,@question), class: 'btn btn-primary'

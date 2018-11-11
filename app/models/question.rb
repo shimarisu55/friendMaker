@@ -20,8 +20,7 @@ class Question < ApplicationRecord
         オリジナル質問
     )
     enum second_q_number:
-    %i(質問を選んでください
-        あなたの「好き」について語って！
+    %i(あなたの「好き」について語って！
         人生の成功経験について語って
         好きな映画は何ですか？
         尊敬している人や師匠の思い出を教えて
@@ -32,8 +31,7 @@ class Question < ApplicationRecord
         オリジナル
     )
     enum third_q_number:
-    %i(質問
-        何をされたら怒る？
+    %i(何をされたら怒る？
         私はどんな立ち位置になれそう？友達？恋人？家族？
         ポエムを作ってよ。
         私と遊びに行くならどこに行きたい？
