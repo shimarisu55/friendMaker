@@ -7,10 +7,11 @@
     p
     |
     - if @user != current_user
-      - if @question.first_q_number != 0 && @question.answer.first_content == '' or  @question.second_q_number.presence && @question.answer.second_content == '' or  @question.third_q_number.presence && @question.answer.third_content == '' 
-        = '回答を待とう'
-      - elsif @question.present?
-        = link_to @user.name + 'さんに質問する', edit_user_question_path(@user,@question), class: 'btn btn-primary'
+      - if @question.present?
+        - if @question.first_q_number != 0 && @question.answer.first_content == '' or  @question.second_q_number.presence && @question.answer.second_content == '' or  @question.third_q_number.presence && @question.answer.third_content == ''
+          = '回答を待とう'
+        - else
+          = link_to @user.name + 'さんに質問する', edit_user_question_path(@user,@question), class: 'btn btn-primary'
       - else
         = link_to @user.name + 'さんに質問する', new_user_question_path(@user), class: 'btn btn-primary'
     - if @user == current_user
@@ -25,6 +26,7 @@
               div class="profile-table"
                 p class="profile-q" = profile.profile_q_number
                 p class="profile-a" = profile.profile_a
+
     h4 Questions
     div class="col-12"
       div class="questions row"
@@ -99,7 +101,6 @@
                 div class="a-chatting text-right"
                   p
                     = q.answer.third_content
-
 
 
     div class="text-left back-link"

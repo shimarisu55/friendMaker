@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User
+            .includes(:a_user_questions) 
+            .order("questions.updated_at desc")
   end
 
   # GET /users/1
@@ -68,6 +70,10 @@ class UsersController < ApplicationController
         format.json { head :no_content }
       end
     end
+  end
+
+  def goal
+    @twitter_user = User.find(params[:user_id])
   end
 
   private
