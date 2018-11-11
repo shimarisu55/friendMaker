@@ -8,15 +8,41 @@
         - answer.errors.full_messages.each do |message|
           li
             = message
-  .field
+  - if answer.first_content == ''
+    .field
+      = form.label :届いた質問
+      | ： 
+      - if answer.question.first_q_number == '質問を選びましょう'
+        = answer.question.original.first_question
+      - else
+        = answer.question.first_q_number
+      .field
+        = form.label :あなたの回答
+        = form.text_field :first_content
+  
+  - elsif answer.second_content == ''
+    .field
     = form.label :届いた質問
     | ： 
-    - if answer.question.q_number == '質問を選びましょう'
-      = answer.question.original.ori_question
+    - if answer.question.second_q_number == '質問を選びましょう'
+      = answer.question.original.second_question
     - else
-      = answer.question.q_number
-  .field
-    = form.label :あなたの回答
-    = form.text_field :content
+      = answer.question.second_q_number
+    .field
+      = form.label :あなたの回答
+      = form.text_field :second_content
+  
+  - else answer.third_content == ''
+    .field
+    = form.label :届いた質問
+    | ： 
+    - if answer.question.third_q_number == '質問を選びましょう'
+      = answer.question.original.third_question
+    - else
+      = answer.question.third_q_number
+    .field
+      = form.label :あなたの回答
+      = form.text_field :third_content
+
   .actions
     = form.submit

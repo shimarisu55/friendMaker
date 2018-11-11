@@ -69,6 +69,6 @@ class OriginalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def original_params
-      params.require(:original).permit(:question_id, :question)
+      params.require(:original).permit(:question_id, :first_question, :second_question, :third_question)
     end
 end

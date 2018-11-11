@@ -7,7 +7,12 @@
     p
     |
     - if @user != current_user
-      = link_to @user.name + 'さんに質問する', new_user_question_path(@user), class: 'btn btn-primary'
+      - if @question.first_q_number != 0 && @question.answer.first_content == '' or  @question.second_q_number.presence && @question.answer.second_content == '' or  @question.third_q_number.presence && @question.answer.third_content == '' 
+        = '回答を待とう'
+      - elsif @question.present?
+        = link_to @user.name + 'さんに質問する', edit_user_question_path(@user,@question), class: 'btn btn-primary'
+      - else
+        = link_to @user.name + 'さんに質問する', new_user_question_path(@user), class: 'btn btn-primary'
     - if @user == current_user
       = link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-primary'
     div class="profile-title"
@@ -26,7 +31,7 @@
         - @user.a_user_questions.each do |q|
           div class="question-table col-12"
             h5
-              = q.non_delete_user + "さんからの質問"
+              = q.non_delete_user + "さんからの１回目の質問"
             div class="questioneer"
               div class="q-icon"
                 = q.non_delete_user_icon
@@ -34,19 +39,68 @@
                 div class="says"
                   p
                   |
-                  - if q.original.ori_question.present?
-                    = q.original.ori_question
+                  - if q.original.first_question.present?
+                    = q.original.first_question
                   - else
-                    = q.q_number
-
-            - if q.answer.content == ''
+                    = q.first_q_number
+            - if q.answer.first_content == ''
               - if q.answer.question.a_user == current_user
                 = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
             - else
               |  　
               div class="a-chatting text-right"
                 p
-                  = q.answer.content
+                  = q.answer.first_content
+
+          - if q.second_q_number.present?
+            div class="question-table col-12"
+              h5
+                = q.non_delete_user + "さんからの２回目の質問"
+              div class="questioneer"
+                div class="q-icon"
+                  = q.non_delete_user_icon
+                div class="q-chatting"
+                  div class="says"
+                    p
+                    |
+                    - if q.original.second_question.present?
+                      = q.original.second_question
+                    - else
+                      = q.second_q_number
+              - if q.answer.second_content == ''
+                - if q.answer.question.a_user == current_user
+                  = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+              - else
+                |  　
+                div class="a-chatting text-right"
+                  p
+                    = q.answer.second_content
+
+          - if q.third_q_number.present?
+            div class="question-table col-12"
+              h5
+                = q.non_delete_user + "さんからの３回目の質問"
+              div class="questioneer"
+                div class="q-icon"
+                  = q.non_delete_user_icon
+                div class="q-chatting"
+                  div class="says"
+                    p
+                    |
+                    - if q.original.third_question.present?
+                      = q.original.third_question
+                    - else
+                      = q.third_q_number
+              - if q.answer.third_content == ''
+                - if q.answer.question.a_user == current_user
+                  = link_to '回答する', edit_user_answer_path(@user, q.answer), class: 'btn btn-primary'
+              - else
+                |  　
+                div class="a-chatting text-right"
+                  p
+                    = q.answer.third_content
+
+
 
     div class="text-left back-link"
       = link_to '←Back', users_path

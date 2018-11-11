@@ -67,11 +67,12 @@ class AnswersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
-      @answer = Answer.find(params[:id])
+      @user = User.find(params[:user_id])
+      @answer = Answer.find_by(question_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:question_id, :content)
+      params.require(:answer).permit(:question_id, :first_content, :second_content, :third_content)
     end
 end
