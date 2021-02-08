@@ -71,7 +71,7 @@ gem 'jquery-ui-rails'
 gem "refile",require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "font-awesome-rails"
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 gem 'devise'
 gem 'paranoia'
